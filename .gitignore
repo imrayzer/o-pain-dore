@@ -1,0 +1,13 @@
+# Dépendances
+node_modules/
+
+# Vercel
+.vercel/
+
+# Système
+.DS_Store
+Thumbs.db
+
+# Éditeurs / logs
+.vscode/
+*.log

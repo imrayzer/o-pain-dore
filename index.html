@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ô Pain Doré — Boulangerie Pâtisserie artisanale à Rabastens (81)</title>
+  <meta name="description" content="Ô Pain Doré, Chez Fab & Fat — Boulangerie & pâtisserie artisanale à Rabastens. Pains au levain, viennoiseries pur beurre et pâtisseries maison, façonnés chaque jour." />
+  <meta property="og:title" content="Ô Pain Doré — Boulangerie Pâtisserie à Rabastens" />
+  <meta property="og:description" content="Le goût de l'artisanat, chaque matin. Pains, viennoiseries et pâtisseries faits maison à Rabastens (81)." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Great+Vibes&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- Grain / texture overlay -->
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- Progress bar -->
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+  <!-- NAV -->
+  <header class="nav" id="nav">
+    <a href="#accueil" class="nav__brand" aria-label="Ô Pain Doré, accueil">
+      <span class="nav__brand-mark">Ô</span>
+      <span class="nav__brand-text">Pain Doré</span>
+    </a>
+    <nav class="nav__links" id="navLinks">
+      <a href="#histoire">Histoire</a>
+      <a href="#specialites">Spécialités</a>
+      <a href="#galerie">Galerie</a>
+      <a href="#avis">Avis</a>
+      <a href="#infos">Horaires</a>
+      <a href="#commande" class="nav__cta">Commander</a>
+    </nav>
+    <button class="nav__burger" id="navBurger" aria-label="Ouvrir le menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="accueil">
+    <div class="hero__glow" aria-hidden="true"></div>
+    <div class="hero__content">
+      <h1 class="visually-hidden">Ô Pain Doré — Boulangerie Pâtisserie artisanale à Rabastens (Chez Fab &amp; Fat)</h1>
+      <p class="hero__eyebrow reveal">Boulangerie · Pâtissière — Rabastens</p>
+
+      <!-- Logo réel : s'affiche automatiquement dès que assets/logo.png est présent.
+           mix-blend-mode:lighten efface le fond noir du PNG (carré). -->
+      <img src="assets/logo.png" alt="Ô Pain Doré" class="hero__logo logo-img" data-logo hidden />
+
+      <!-- Repli texte tant que le logo n'est pas déposé -->
+      <div class="hero__title-fallback logo-fallback">
+        <p class="hero__title">
+          <span class="hero__script reveal" data-delay="1">Ô</span>
+          <span class="hero__main reveal" data-delay="2">Pain Doré</span>
+        </p>
+        <p class="hero__tagline reveal" data-delay="3">Chez Fab &amp; Fat</p>
+      </div>
+
+      <p class="hero__sub reveal" data-delay="4">
+        Le goût de l'artisanat, façonné chaque matin.<br />
+        Pains au levain, viennoiseries pur beurre &amp; pâtisseries maison.
+      </p>
+      <div class="hero__actions reveal" data-delay="5">
+        <a href="#specialites" class="btn btn--gold">Découvrir nos créations</a>
+        <a href="#infos" class="btn btn--ghost">Horaires &amp; accès</a>
+      </div>
+    </div>
+    <div class="hero__scroll reveal" data-delay="6" aria-hidden="true">
+      <span>Défiler</span>
+      <span class="hero__scroll-line"></span>
+    </div>
+  </section>
+
+  <!-- BANDEAU DÉFILANT -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track">
+      <span>Pain au levain</span><span class="marquee__dot">•</span>
+      <span>Croissant pur beurre</span><span class="marquee__dot">•</span>
+      <span>Tradition française</span><span class="marquee__dot">•</span>
+      <span>Pâtisseries maison</span><span class="marquee__dot">•</span>
+      <span>Fait main à Rabastens</span><span class="marquee__dot">•</span>
+      <span>Pain au levain</span><span class="marquee__dot">•</span>
+      <span>Croissant pur beurre</span><span class="marquee__dot">•</span>
+      <span>Tradition française</span><span class="marquee__dot">•</span>
+      <span>Pâtisseries maison</span><span class="marquee__dot">•</span>
+      <span>Fait main à Rabastens</span><span class="marquee__dot">•</span>
+    </div>
+  </div>
+
+  <!-- HISTOIRE -->
+  <section class="histoire" id="histoire">
+    <div class="histoire__grid">
+      <div class="histoire__visual reveal">
+        <div class="histoire__frame">
+          <div class="histoire__badge">
+            <span class="histoire__badge-top">Depuis Rabastens</span>
+            <span class="histoire__badge-big">81</span>
+            <span class="histoire__badge-bottom">Tarn</span>
+          </div>
+        </div>
+      </div>
+      <div class="histoire__text">
+        <p class="section__eyebrow reveal">Notre histoire</p>
+        <h2 class="section__title reveal">Deux passionnés,<br />un même amour du bon pain</h2>
+        <p class="reveal">
+          Derrière Ô Pain Doré, il y a <strong>Fab &amp; Fat</strong> — un couple d'artisans
+          qui a fait du fournil le cœur battant du village. Chaque nuit, la pâte prend
+          vie&nbsp;; chaque matin, la vitrine se pare de dorures.
+        </p>
+        <p class="reveal">
+          Farines sélectionnées, levain naturel, beurre de qualité et un tour de main
+          transmis avec le sourire. Ici, rien n'est industriel&nbsp;: tout est pétri,
+          façonné et cuit sur place, dans le respect de la tradition française.
+        </p>
+        <ul class="histoire__values">
+          <li class="reveal"><span>01</span> Levain naturel &amp; fermentation lente</li>
+          <li class="reveal"><span>02</span> Viennoiseries pur beurre, tourées maison</li>
+          <li class="reveal"><span>03</span> Pâtisseries créatives, de saison</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPÉCIALITÉS -->
+  <section class="specialites" id="specialites">
+    <div class="section__head">
+      <p class="section__eyebrow reveal">Nos spécialités</p>
+      <h2 class="section__title reveal">La vitrine du jour</h2>
+      <p class="section__lead reveal">
+        Une sélection qui change au fil des saisons et de l'inspiration du fournil.
+      </p>
+    </div>
+
+    <div class="cards">
+      <article class="card reveal">
+        <div class="card__icon">🥖</div>
+        <h3>Les pains</h3>
+        <p>Baguette tradition, pain au levain, céréales et grandes miches à la croûte
+           dorée et à la mie alvéolée.</p>
+        <span class="card__line"></span>
+      </article>
+
+      <article class="card reveal" data-delay="1">
+        <div class="card__icon">🥐</div>
+        <h3>Les viennoiseries</h3>
+        <p>Croissants et pains au chocolat pur beurre, chaussons, pains aux raisins&nbsp;:
+           feuilletage croustillant, cœur fondant.</p>
+        <span class="card__line"></span>
+      </article>
+
+      <article class="card reveal" data-delay="2">
+        <div class="card__icon">🍰</div>
+        <h3>Les pâtisseries</h3>
+        <p>Tartes de saison, entremets, galettes et créations gourmandes réalisées
+           entièrement maison.</p>
+        <span class="card__line"></span>
+      </article>
+
+      <article class="card reveal" data-delay="3">
+        <div class="card__icon">🎂</div>
+        <h3>Sur devis</h3>
+        <p>Gâteaux d'anniversaire, pièces montées et commandes pour vos événements&nbsp;:
+           demandez votre devis, on s'occupe du reste.</p>
+        <a href="#commande" class="card__cta">Demander un devis →</a>
+        <span class="card__line"></span>
+      </article>
+    </div>
+  </section>
+
+  <!-- CHIFFRES -->
+  <section class="stats">
+    <div class="stats__item reveal">
+      <span class="stats__num" data-count="100">0</span><span class="stats__suffix">%</span>
+      <p>Fait maison</p>
+    </div>
+    <div class="stats__item reveal" data-delay="1">
+      <span class="stats__num" data-count="4">0</span><span class="stats__suffix">h</span>
+      <p>Debout dès l'aube</p>
+    </div>
+    <div class="stats__item reveal" data-delay="2">
+      <span class="stats__num" data-count="30">0</span><span class="stats__suffix">+</span>
+      <p>Créations en vitrine</p>
+    </div>
+    <div class="stats__item reveal" data-delay="3">
+      <span class="stats__num" data-count="1">0</span><span class="stats__suffix"></span>
+      <p>Fournil au cœur de Rabastens</p>
+    </div>
+  </section>
+
+  <!-- GALERIE -->
+  <section class="galerie" id="galerie">
+    <div class="section__head">
+      <p class="section__eyebrow reveal">Galerie</p>
+      <h2 class="section__title reveal">L'atelier en images</h2>
+      <p class="section__lead reveal">
+        Retrouvez nos créations du moment sur
+        <a href="https://www.instagram.com/opaindore81/" target="_blank" rel="noopener">Instagram @opaindore81</a>.
+      </p>
+    </div>
+
+    <div class="gallery-grid">
+      <figure class="gallery-item gallery-item--tall reveal" data-tag="Signature">
+        <div class="gallery-placeholder" data-emoji="🥧" style="--g1:#3a2a12;--g2:#0e0b07">
+          <span class="gallery-name">La tarte aux fruits<br />de saison</span>
+        </div>
+      </figure>
+      <figure class="gallery-item reveal" data-delay="1" data-tag="Viennoiserie">
+        <div class="gallery-placeholder" data-emoji="🥐" style="--g1:#42300f;--g2:#0e0b07">
+          <span class="gallery-name">Le croissant<br />pur beurre</span>
+        </div>
+      </figure>
+      <figure class="gallery-item reveal" data-delay="2" data-tag="Pain">
+        <div class="gallery-placeholder" data-emoji="🥖" style="--g1:#37260f;--g2:#0e0b07">
+          <span class="gallery-name">La tradition<br />au levain</span>
+        </div>
+      </figure>
+      <figure class="gallery-item gallery-item--wide reveal" data-delay="1" data-tag="Vitrine">
+        <div class="gallery-placeholder" data-emoji="🧁" style="--g1:#3d2c14;--g2:#0e0b07">
+          <span class="gallery-name">La vitrine gourmande du matin</span>
+        </div>
+      </figure>
+      <figure class="gallery-item reveal" data-delay="2" data-tag="Pâtisserie">
+        <div class="gallery-placeholder" data-emoji="🍮" style="--g1:#40300f;--g2:#0e0b07">
+          <span class="gallery-name">Le flan<br />maison</span>
+        </div>
+      </figure>
+    </div>
+    <p class="galerie__note reveal">💡 Voici la mise en page proposée. Dépose tes photos dans <code>assets/</code> et je remplace chaque vignette au bon endroit.</p>
+  </section>
+
+  <!-- AVIS GOOGLE -->
+  <section class="avis" id="avis">
+    <div class="section__head">
+      <p class="section__eyebrow reveal">Ils en parlent</p>
+      <h2 class="section__title reveal">Vos avis Google</h2>
+      <div class="avis__rating reveal">
+        <span class="avis__stars" aria-hidden="true">★★★★★</span>
+        <span class="avis__score"><strong>4,9</strong>/5 · <a href="https://www.google.com/search?q=Ô+Pain+Doré+Rabastens" target="_blank" rel="noopener">avis Google</a></span>
+      </div>
+    </div>
+
+    <div class="avis__grid">
+      <blockquote class="avis__card reveal">
+        <span class="avis__quote">“</span>
+        <span class="avis__stars" aria-hidden="true">★★★★★</span>
+        <p>Les meilleurs croissants du coin, encore tièdes le matin. Un accueil toujours souriant chez Fab &amp; Fat&nbsp;!</p>
+        <footer><span class="avis__avatar">M</span> Marie L.</footer>
+      </blockquote>
+      <blockquote class="avis__card reveal" data-delay="1">
+        <span class="avis__quote">“</span>
+        <span class="avis__stars" aria-hidden="true">★★★★★</span>
+        <p>Un vrai pain au levain comme on n'en trouve plus. La galette était magnifique et délicieuse.</p>
+        <footer><span class="avis__avatar">T</span> Thomas R.</footer>
+      </blockquote>
+      <blockquote class="avis__card reveal" data-delay="2">
+        <span class="avis__quote">“</span>
+        <span class="avis__stars" aria-hidden="true">★★★★★</span>
+        <p>Pâtisseries superbes et toujours faites maison. Une adresse incontournable à Rabastens.</p>
+        <footer><span class="avis__avatar">S</span> Sophie D.</footer>
+      </blockquote>
+    </div>
+
+    <div class="avis__actions reveal">
+      <a href="https://www.google.com/search?q=Ô+Pain+Doré+Rabastens" target="_blank" rel="noopener" class="btn btn--ghost">Lire tous les avis Google</a>
+      <a href="https://www.google.com/search?q=Ô+Pain+Doré+Rabastens" target="_blank" rel="noopener" class="btn btn--gold">Laisser un avis ⭐</a>
+    </div>
+    <p class="avis__note reveal">💡 Exemples de mise en page. Une fois ta fiche Google reliée, ces avis peuvent s'afficher <strong>automatiquement et en direct</strong> (voir note plus bas).</p>
+  </section>
+
+  <!-- INFOS : HORAIRES & ACCÈS -->
+  <section class="infos" id="infos">
+    <div class="infos__grid">
+      <div class="infos__col reveal">
+        <p class="section__eyebrow">Horaires</p>
+        <h2 class="section__title">Quand nous rendre visite</h2>
+        <ul class="hours">
+          <li><span>Lundi</span><span class="hours__closed">Fermé</span></li>
+          <li><span>Mardi</span><span>7h00 – 13h30 · 15h30 – 19h00</span></li>
+          <li><span>Mercredi</span><span>7h00 – 13h30 · 15h30 – 19h00</span></li>
+          <li><span>Jeudi</span><span>7h00 – 13h30 · 15h30 – 19h00</span></li>
+          <li><span>Vendredi</span><span>7h00 – 13h30 · 15h30 – 19h00</span></li>
+          <li><span>Samedi</span><span>7h00 – 13h30 · 15h30 – 19h00</span></li>
+          <li><span>Dimanche</span><span>7h00 – 13h00</span></li>
+        </ul>
+      </div>
+
+      <div class="infos__col reveal" data-delay="1">
+        <p class="section__eyebrow">Accès</p>
+        <h2 class="section__title">Nous trouver</h2>
+        <div class="infos__contact">
+          <p><strong>Ô Pain Doré</strong><br />Rabastens (81800), Tarn</p>
+          <p><a href="tel:+33000000000">05 00 00 00 00</a></p>
+          <p><a href="https://www.instagram.com/opaindore81/" target="_blank" rel="noopener">@opaindore81</a></p>
+        </div>
+        <div class="infos__map">
+          <iframe
+            title="Carte — Rabastens"
+            src="https://www.openstreetmap.org/export/embed.html?bbox=1.68%2C43.81%2C1.75%2C43.84&layer=mapnik&marker=43.8244%2C1.7261"
+            loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <p class="infos__hint">📍 Adresse &amp; téléphone à compléter.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMMANDE / DEVIS -->
+  <section class="commande" id="commande">
+    <div class="commande__grid">
+      <div class="commande__intro reveal">
+        <p class="section__eyebrow">Commande &amp; devis</p>
+        <h2 class="section__title">Passez commande<br />ou demandez un devis</h2>
+        <p class="commande__lead">
+          Un gâteau pour une occasion, une grosse commande de pains ou de viennoiseries,
+          une pièce sur-mesure&nbsp;? Remplissez ce formulaire, nous revenons vers vous
+          rapidement avec un devis personnalisé et gratuit.
+        </p>
+        <ul class="commande__perks">
+          <li>✔ Devis gratuit &amp; sans engagement</li>
+          <li>✔ 100&nbsp;% fait maison</li>
+          <li>✔ Réponse sous 24–48&nbsp;h</li>
+        </ul>
+        <p class="commande__or">Ou appelez-nous directement&nbsp;: <a href="tel:+33000000000">05 00 00 00 00</a></p>
+      </div>
+
+      <form class="commande__form reveal" data-delay="1" id="orderForm" novalidate>
+        <div class="field">
+          <label for="f-name">Nom &amp; prénom *</label>
+          <input type="text" id="f-name" name="name" required placeholder="Marie Dupont" />
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="f-phone">Téléphone *</label>
+            <input type="tel" id="f-phone" name="phone" required placeholder="06 12 34 56 78" />
+          </div>
+          <div class="field">
+            <label for="f-email">E-mail</label>
+            <input type="email" id="f-email" name="email" placeholder="vous@email.fr" />
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="f-type">Type de commande *</label>
+            <select id="f-type" name="type" required>
+              <option value="" disabled selected>Choisir…</option>
+              <option>Gâteau / événement</option>
+              <option>Pâtisseries</option>
+              <option>Viennoiseries (quantité)</option>
+              <option>Pains (quantité)</option>
+              <option>Autre / sur-mesure</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-date">Date souhaitée</label>
+            <input type="date" id="f-date" name="date" />
+          </div>
+        </div>
+        <div class="field">
+          <label for="f-message">Votre demande *</label>
+          <textarea id="f-message" name="message" rows="4" required placeholder="Ex : un gâteau d'anniversaire pour 10 personnes, parfum chocolat, pour le samedi…"></textarea>
+        </div>
+        <button type="submit" class="btn btn--gold commande__submit">Envoyer ma demande</button>
+        <p class="commande__status" id="orderStatus" role="status" aria-live="polite"></p>
+        <p class="commande__legal">Vos informations servent uniquement à traiter votre demande. Aucun paiement en ligne.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- CTA CONTACT -->
+  <section class="cta" id="contact">
+    <div class="cta__inner reveal">
+      <h2>Une envie&nbsp;? Une commande&nbsp;?</h2>
+      <p>Passez au fournil ou écrivez-nous — on adore préparer vos moments gourmands.</p>
+      <div class="cta__actions">
+        <a href="tel:+33000000000" class="btn btn--gold">Appeler la boulangerie</a>
+        <a href="https://www.instagram.com/opaindore81/" target="_blank" rel="noopener" class="btn btn--ghost">Suivre sur Instagram</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <img src="assets/logo.png" alt="Ô Pain Doré" class="footer__logo logo-img" data-logo hidden />
+    <div class="footer__brand logo-fallback">
+      <span class="footer__mark">Ô</span> Pain Doré
+      <span class="footer__sub">Chez Fab &amp; Fat · Rabastens</span>
+    </div>
+    <nav class="footer__links">
+      <a href="#accueil">Accueil</a>
+      <a href="#histoire">Histoire</a>
+      <a href="#specialites">Spécialités</a>
+      <a href="#avis">Avis</a>
+      <a href="#infos">Horaires</a>
+      <a href="#commande">Commander</a>
+      <a href="https://www.instagram.com/opaindore81/" target="_blank" rel="noopener">Instagram</a>
+    </nav>
+    <p class="footer__copy">© <span id="year"></span> Ô Pain Doré — Boulangerie Pâtisserie artisanale. Tous droits réservés.</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
