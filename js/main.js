@@ -188,6 +188,40 @@
     status.className = "commande__status " + (type || "");
   }
 
+  /* ---- Farine : dosage des 3 couches selon la position de scroll ----
+     Plus on descend, plus la densité augmente : poussière → moyenne → généreuse.
+     Les couches se relaient (fondu enchaîné) pour éviter une surbrillance
+     qui rendrait le texte illisible. */
+  var farine1 = document.querySelector(".farine--1");
+  var farine2 = document.querySelector(".farine--2");
+  var farine3 = document.querySelector(".farine--3");
+
+  // Opacités maximales : farine assumée — la lisibilité est assurée
+  // par le halo sombre appliqué aux textes posés sur le fond (voir style.css)
+  var MAX_1 = 0.72, MAX_2 = 0.68, MAX_3 = 0.62;
+
+  function seg(p, a, b) {
+    return Math.min(1, Math.max(0, (p - a) / (b - a)));
+  }
+
+  function updateFarine() {
+    if (!farine1) return;
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    var p = h > 0 ? (window.scrollY || document.documentElement.scrollTop) / h : 0;
+
+    // chaque couche monte puis s'efface partiellement au profit de la suivante
+    var o1 = seg(p, 0.20, 0.44) * (1 - 0.75 * seg(p, 0.48, 0.74));
+    var o2 = seg(p, 0.44, 0.70) * (1 - 0.70 * seg(p, 0.72, 0.94));
+    var o3 = seg(p, 0.68, 0.96);
+
+    farine1.style.opacity = (o1 * MAX_1).toFixed(3);
+    farine2.style.opacity = (o2 * MAX_2).toFixed(3);
+    farine3.style.opacity = (o3 * MAX_3).toFixed(3);
+  }
+  window.addEventListener("scroll", updateFarine, { passive: true });
+  window.addEventListener("resize", updateFarine);
+  updateFarine();
+
   /* ---- Parallaxe douce sur le glow du hero ---- */
   var glow = document.querySelector(".hero__glow");
   if (glow && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {

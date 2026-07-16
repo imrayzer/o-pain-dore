@@ -13,6 +13,9 @@
   --brun:        #6b4a2b;
   --brun-clair:  #a9743f;
 
+  /* Plan de travail — image de fond (voir html::before) */
+  --plan-travail: url("../assets/marbre.webp");
+
   /* Or — dégradé signature */
   --or:          #d9b55b;
   --or-clair:    #f6e3a4;
@@ -32,14 +35,91 @@
 
 /* ---------- Reset ---------- */
 *{ margin:0; padding:0; box-sizing:border-box; }
-html{ scroll-behavior:smooth; }
+html{ scroll-behavior:smooth; background:var(--noir); }
+
+/* Plan de travail — image fixe : nette, sans étirement ni raccord visible */
+html::before{
+  content:"";
+  position:fixed; inset:0; z-index:-3; pointer-events:none;
+  background:var(--plan-travail) center center / cover no-repeat;
+}
+
 body{
   font-family:var(--f-sans);
-  background:var(--noir);
   color:var(--creme);
   line-height:1.6;
   overflow-x:hidden;
   -webkit-font-smoothing:antialiased;
+  position:relative;
+  background:transparent; /* laisse voir le plan de travail */
+}
+
+/* Voile sombre qui se lève au fil du scroll : noir en haut → plan de travail en bas */
+body::before{
+  content:"";
+  position:absolute; inset:0; z-index:-2; pointer-events:none;
+  background:linear-gradient(to bottom,
+    var(--noir)       0%,
+    var(--noir)       13%,
+    rgba(11,10,8,.95) 23%,
+    rgba(11,10,8,.82) 35%,
+    rgba(11,10,8,.64) 49%,
+    rgba(11,10,8,.46) 65%,
+    rgba(11,10,8,.32) 83%,
+    rgba(11,10,8,.28) 100%);
+}
+
+/* Farine — 3 photos de densités croissantes, fixées comme le plan de travail.
+   Les images sont détourées en amont (fond noir -> transparence réelle), donc
+   AUCUN mix-blend-mode ici : il était mal composité et débordait par-dessus la
+   barre de navigation (conflit avec son backdrop-filter).
+   L'opacité de chaque couche est dosée au scroll par js/main.js. */
+.farine{
+  position:fixed; inset:0; z-index:-1; pointer-events:none;
+  background-position:center center;
+  background-size:cover;
+  background-repeat:no-repeat;
+  opacity:0;
+  will-change:opacity;
+  /* Légère respiration au centre : la farine reste bien présente partout,
+     la lisibilité est assurée par le halo sombre des textes (voir plus bas). */
+  mask-image:
+    radial-gradient(ellipse 72% 60% at 50% 48%,
+      rgba(0,0,0,.42) 0%, rgba(0,0,0,.68) 62%, #000 100%);
+  -webkit-mask-image:
+    radial-gradient(ellipse 72% 60% at 50% 48%,
+      rgba(0,0,0,.42) 0%, rgba(0,0,0,.68) 62%, #000 100%);
+}
+.farine--1{ background-image:url("../assets/farine-1.webp"); }
+.farine--2{ background-image:url("../assets/farine-2.webp"); }
+.farine--3{ background-image:url("../assets/farine-3.webp"); }
+
+@media (prefers-reduced-motion:reduce){
+  .farine{ transition:none; }
+}
+
+/* ---------- Halo sombre ----------
+   Les textes posés directement sur le plan de travail reçoivent une aura
+   sombre : elle les décolle de la farine claire et garantit le contraste.
+   (Les cartes/formulaires ont déjà un fond opaque : rien à faire pour eux.) */
+.section__eyebrow, .section__title, .section__lead,
+.histoire__text p, .histoire__values li,
+.stats__item p,
+.hours li span, .infos__contact p, .infos__contact strong, .infos__hint,
+.commande__lead, .commande__perks li, .commande__or,
+.galerie__note, .avis__note, .avis__score, .avis__stars,
+.gallery-name,
+.footer__brand, .footer__sub, .footer__links a, .footer__copy{
+  text-shadow:
+    0 1px 8px rgba(11,10,8,.92),
+    0 0 22px rgba(11,10,8,.78);
+}
+
+/* Textes en dégradé doré (background-clip:text) : text-shadow peindrait une
+   tache derrière le glyphe transparent → on passe par drop-shadow. */
+.stats__num, .stats__suffix, .footer__mark, .cta__inner h2{
+  filter:drop-shadow(0 2px 10px rgba(11,10,8,.92))
+         drop-shadow(0 0 20px rgba(11,10,8,.7));
 }
 a{ color:inherit; text-decoration:none; }
 img{ max-width:100%; display:block; }
@@ -51,6 +131,7 @@ img{ max-width:100%; display:block; }
 }
 
 /* ---------- Logo (image réelle, fond noir détouré au chargement) ---------- */
+.logo-img[hidden]{ display:none !important; } /* la règle img{display:block} du reset l'emporterait sinon */
 .hero__logo{
   width:min(560px, 86vw); margin:0 auto 1.6rem;
   filter:drop-shadow(0 12px 46px rgba(233,198,107,.22));
@@ -148,7 +229,8 @@ img{ max-width:100%; display:block; }
 }
 .nav.scrolled{
   padding:.85rem clamp(1.4rem,5vw,3rem);
-  background:rgba(11,10,8,.82); backdrop-filter:blur(14px);
+  /* bien opaque : le fond clair (farine) ne doit pas laisser passer le contenu */
+  background:rgba(11,10,8,.94); backdrop-filter:blur(14px);
   border-bottom:1px solid rgba(233,198,107,.14);
 }
 .nav__brand{ display:flex; align-items:baseline; gap:.5rem; }
@@ -265,7 +347,7 @@ img{ max-width:100%; display:block; }
 /* =========================================================
    HISTOIRE
    ========================================================= */
-.histoire{ padding:clamp(5rem,10vw,8rem) clamp(1.4rem,5vw,3rem); background:var(--noir); }
+.histoire{ padding:clamp(5rem,10vw,8rem) clamp(1.4rem,5vw,3rem); }
 .histoire__grid{
   max-width:var(--maxw); margin:0 auto;
   display:grid; grid-template-columns:.85fr 1.15fr; gap:clamp(2.5rem,6vw,5rem); align-items:center;
@@ -314,7 +396,7 @@ img{ max-width:100%; display:block; }
 /* =========================================================
    SPÉCIALITÉS
    ========================================================= */
-.specialites{ padding:clamp(5rem,10vw,8rem) 0; background:linear-gradient(180deg,var(--noir),var(--noir-2)); }
+.specialites{ padding:clamp(5rem,10vw,8rem) 0; }
 .cards{
   max-width:var(--maxw); margin:3.5rem auto 0; padding:0 clamp(1.4rem,5vw,3rem);
   display:grid; grid-template-columns:repeat(4,1fr); gap:1.4rem;
@@ -368,7 +450,7 @@ img{ max-width:100%; display:block; }
 /* =========================================================
    GALERIE
    ========================================================= */
-.galerie{ padding:clamp(5rem,10vw,8rem) 0 clamp(3rem,6vw,4rem); background:var(--noir-2); }
+.galerie{ padding:clamp(5rem,10vw,8rem) 0 clamp(3rem,6vw,4rem); }
 .gallery-grid{
   max-width:var(--maxw); margin:3.5rem auto 0; padding:0 clamp(1.4rem,5vw,3rem);
   display:grid; grid-template-columns:repeat(4,1fr); grid-auto-rows:190px; gap:1.2rem;
@@ -410,7 +492,7 @@ img{ max-width:100%; display:block; }
 /* =========================================================
    INFOS
    ========================================================= */
-.infos{ padding:clamp(5rem,10vw,8rem) clamp(1.4rem,5vw,3rem); background:var(--noir); }
+.infos{ padding:clamp(5rem,10vw,8rem) clamp(1.4rem,5vw,3rem); }
 .infos__grid{
   max-width:var(--maxw); margin:0 auto;
   display:grid; grid-template-columns:1fr 1fr; gap:clamp(2.5rem,6vw,4.5rem);
@@ -437,7 +519,7 @@ img{ max-width:100%; display:block; }
 /* =========================================================
    CTA
    ========================================================= */
-.cta{ padding:clamp(5rem,10vw,8rem) clamp(1.4rem,5vw,3rem); background:linear-gradient(180deg,var(--noir),var(--noir-2)); }
+.cta{ padding:clamp(5rem,10vw,8rem) clamp(1.4rem,5vw,3rem); }
 .cta__inner{
   max-width:840px; margin:0 auto; text-align:center; padding:clamp(2.6rem,6vw,4.5rem) clamp(1.6rem,5vw,3.5rem);
   border-radius:24px; position:relative; overflow:hidden;
@@ -458,7 +540,7 @@ img{ max-width:100%; display:block; }
    FOOTER
    ========================================================= */
 .footer{
-  padding:3.5rem clamp(1.4rem,5vw,3rem) 2.5rem; background:var(--noir-2);
+  padding:3.5rem clamp(1.4rem,5vw,3rem) 2.5rem;
   border-top:1px solid rgba(233,198,107,.14);
   display:flex; flex-direction:column; align-items:center; gap:1.6rem; text-align:center;
 }
@@ -477,7 +559,7 @@ img{ max-width:100%; display:block; }
 /* =========================================================
    AVIS GOOGLE
    ========================================================= */
-.avis{ padding:clamp(5rem,10vw,8rem) 0; background:var(--noir); }
+.avis{ padding:clamp(5rem,10vw,8rem) 0; }
 .avis__rating{ display:flex; align-items:center; gap:.9rem; margin-top:1.4rem; flex-wrap:wrap; }
 .avis__stars{ color:var(--or-vif); letter-spacing:.12em; font-size:1.2rem; }
 .avis__score{ font-family:var(--f-serif); font-size:1.2rem; color:var(--creme-2); }
@@ -514,7 +596,7 @@ img{ max-width:100%; display:block; }
 /* =========================================================
    COMMANDE / DEVIS
    ========================================================= */
-.commande{ padding:clamp(5rem,10vw,8rem) clamp(1.4rem,5vw,3rem); background:linear-gradient(180deg,var(--noir-2),var(--noir)); }
+.commande{ padding:clamp(5rem,10vw,8rem) clamp(1.4rem,5vw,3rem); }
 .commande__grid{
   max-width:var(--maxw); margin:0 auto;
   display:grid; grid-template-columns:1fr 1.05fr; gap:clamp(2.5rem,6vw,4.5rem); align-items:start;
